@@ -17,5 +17,7 @@ int main() { //int argc, char* argv[] not used right now to circumvent warnings
 	Point scaled = a * 3.0;
 	Point::printPoint(sum);
 	Point::printPoint(scaled);
+	double distAB = a.getDist(b);
+	std::cout << "Dist between a and b : " << distAB << std::endl;
 	std::cout << "End of main" << std::endl;
 }

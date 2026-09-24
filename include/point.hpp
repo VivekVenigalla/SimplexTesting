@@ -18,6 +18,7 @@ public:
 	Point operator+(const Point& other) const;
 	Point operator-(const Point& other) const;
 	Point operator*(const double& c) const;
+	double getDist(const Point& other) const;
 	void addElement(double in);
 	static void printPoint(const Point& po);
 };
