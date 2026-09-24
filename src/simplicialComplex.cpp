@@ -9,21 +9,22 @@ void SimplicialComplex::addSimplex(const Simplex& si) {
 	// base step : a point has no faces so it is only added itself
 	// recursion step : add all of the faces of it and then itself
 	// if it is already in the set then all of its faces are too, so we can stop
-	if (contains(si)) {
+	if (contains(si)) { // since a face that is already in the complex will have the same child simplices, ignore it
 		return;
 	}
 	for (const auto& s : si.getFaces()) {
-		addSimplex(s);
+		addSimplex(s); // iterate over all of the child simplices
 	}
-	simplices.insert(si);
+	simplices.insert(si); // insert for sets
 }
 
 bool SimplicialComplex::contains(const Simplex& si) const {
 	return simplices.find(si) != simplices.end();
+	// you can also use .contains() for sets but this version will work with older c++ versions
 }
 
 int SimplicialComplex::getDim() const {
-	int dim = -1; // dimension of the empty complex
+	int dim = -1; // dimension of an empty complex because 0-1 = -1
 	for (const auto& s : simplices) {
 		if (s.getDim() > dim) {
 			dim = s.getDim();
@@ -34,8 +35,8 @@ int SimplicialComplex::getDim() const {
 
 std::vector<Simplex> SimplicialComplex::getSimplices(int d) const {
 	std::vector<Simplex> result;
-	for (const auto& s : simplices) {
-		if (s.getDim() == d) {
+	for (const auto& s : simplices) { // simple iteration
+		if (s.getDim() == d) { // Remember getDim is a function of Simplex (# of vertexes - 1)
 			result.push_back(s);
 		}
 	}
