@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdexcept>
 // although we can use arrays they are harder to work with since they are a fixed size
 // I will use a vector for ease of building the point
 
@@ -12,10 +14,10 @@ public:
 	std::vector<double> p; // point
 	Point(int d, std::vector<double> in);
 	Point(int d);
-	int getDim();
-	Point operator+(const Point& other);
-	Point operator-(const Point& other);
-	Point operator*(const double& c);
+	int getDim() const;
+	Point operator+(const Point& other) const;
+	Point operator-(const Point& other) const;
+	Point operator*(const double& c) const;
 	void addElement(double in);
 	static void printPoint(const Point& po);
 };
