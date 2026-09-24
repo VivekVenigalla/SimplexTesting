@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <array>
 #include "./point.hpp"
@@ -10,7 +11,7 @@ public:
 	PointCloud(int d);
 
 	void addPoint(const Point& pt);
-	double hFunc(const Point& pt);
+	double hFunc(const Point& pt) const;
 
 
 };

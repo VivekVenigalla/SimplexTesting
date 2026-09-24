@@ -10,7 +10,7 @@ void PointCloud::addPoint(const Point& pt) {
 	allPoints.push_back(pt); //push back element in array
 }
 
-double PointCloud::hFunc(const Point& pt) {
+double PointCloud::hFunc(const Point& pt) const {
 	/*double* minDist = nullptr; //initialize to nullptr so we can check in initial if
 	double dist;
 	for(Point temp : points) {
@@ -30,13 +30,15 @@ double PointCloud::hFunc(const Point& pt) {
 	return *minDist; //access pointer value*/
 
 	// iterate over the list of vectors and find the minimum distance
-	double* minDist = nullptr; //this allows us to get the initial dist
-	double temp;
+	if (allPoints.empty()) {
+		throw std::invalid_argument("Point cloud is empty");
+	}
+	double minDist = pt.getDist(allPoints[0]); // initial distance
 	for (const auto& po : allPoints) {
-		temp = pt.getDist(po);
-		if (minDist == nullptr || temp < *minDist) {
-			*minDist = temp; // assign the pointer to the address of temp
+		double temp = pt.getDist(po);
+		if (temp < minDist) {
+			minDist = temp;
 		}
 	}
-	return *minDist; // access pointer value
+	return minDist;
 }
