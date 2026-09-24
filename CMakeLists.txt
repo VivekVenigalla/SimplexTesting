@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_EXTENSIONS OFF)
 set(PROJECT_SOURCES
     src/main.cpp
     src/simplex.cpp
-    # include src/pointCloud.cpp later
+    src/pointCloud.cpp
     src/point.cpp
 )
 

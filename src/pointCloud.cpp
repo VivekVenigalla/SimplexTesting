@@ -1,7 +1,7 @@
 #include "../include/pointCloud.hpp"
 #include <cmath> // for square root
 
-Point::Point(int d) : dimension(d){
+PointCloud::PointCloud(int d) : dimension(d){
 	// no implementation
 }
 
@@ -10,7 +10,7 @@ void PointCloud::addPoint(const Point& pt) {
 	allPoints.push_back(pt); //push back element in array
 }
 
-double hFunc(const Point& pt) {
+double PointCloud::hFunc(const Point& pt) {
 	/*double* minDist = nullptr; //initialize to nullptr so we can check in initial if
 	double dist;
 	for(Point temp : points) {
@@ -34,8 +34,8 @@ double hFunc(const Point& pt) {
 	double temp;
 	for (const auto& po : allPoints) {
 		temp = pt.getDist(po);
-		if (minDist == nullptr || temp < minDist) {
-			minDist = temp;
+		if (minDist == nullptr || temp < *minDist) {
+			*minDist = temp; // assign the pointer to the address of temp
 		}
 	}
 	return *minDist; // access pointer value

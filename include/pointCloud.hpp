@@ -2,13 +2,12 @@
 #include <array>
 #include "./point.hpp"
 
-template <size_t N>
 class PointCloud {
 public:
 	std::vector<Point> allPoints; //instance variable for allPoints
 	int dimension;
 
-	Point(int d);
+	PointCloud(int d);
 
 	void addPoint(const Point& pt);
 	double hFunc(const Point& pt);

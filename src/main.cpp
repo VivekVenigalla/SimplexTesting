@@ -1,5 +1,5 @@
 #include "../include/simplex.hpp"
-//#include "../include/pointCloud.hpp"
+#include "../include/pointCloud.hpp"
 #include "../include/point.hpp"
 
 
@@ -19,5 +19,10 @@ int main() { //int argc, char* argv[] not used right now to circumvent warnings
 	Point::printPoint(scaled);
 	double distAB = a.getDist(b);
 	std::cout << "Dist between a and b : " << distAB << std::endl;
+	PointCloud newCloud(2);
+	newCloud.addPoint(a);
+	newCloud.addPoint(b);
+	double minDist = newCloud.hFunc(Point{2, {5.0, 6.0}});
+	std::cout << "hFunc of (5.0, 6.0) : " << minDist << std::endl;
 	std::cout << "End of main" << std::endl;
 }
