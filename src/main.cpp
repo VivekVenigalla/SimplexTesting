@@ -1,6 +1,7 @@
 #include "../include/simplex.hpp"
 #include "../include/pointCloud.hpp"
 #include "../include/point.hpp"
+#include "../include/simplicialComplex.hpp"
 
 
 int main() { //int argc, char* argv[] not used right now to circumvent warnings
@@ -33,6 +34,12 @@ int main() { //int argc, char* argv[] not used right now to circumvent warnings
 
 	// additional tests
 	std::cout << "Additional tests: " << std::endl;
+	SimplicialComplex complex;
+	complex.addSimplex(tetrahedron);
+	complex.addSimplex(Simplex({0, 1, 2}));
+	SimplicialComplex::printComplex(complex);
+	std::cout << "Contains [1, 3] : " << complex.contains(Simplex({1, 3})) << std::endl;
+	std::cout << "Contains [0, 4] : " << complex.contains(Simplex({0, 4})) << std::endl;
 	Point a(2, {1.0, 2.0});
 	Point b(2, {3.0, 4.0});
 	Point sum = a + b;

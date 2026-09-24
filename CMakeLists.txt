@@ -14,6 +14,7 @@ set(PROJECT_SOURCES
     src/main.cpp
     src/simplex.cpp
     src/pointCloud.cpp
+    src/simplicialComplex.cpp
     src/point.cpp
 )
 
