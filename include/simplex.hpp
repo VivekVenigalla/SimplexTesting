@@ -1,16 +1,22 @@
-#include <string>
+#pragma once
 #include <iostream>
 #include <vector>
-#include "./include/pointCloud.hpp"
-#include "./include/point.hpp"
+#include <algorithm>
+#include <stdexcept>
 
 class Simplex {
 	public:
-		Simplex(int order, PointCloud& ref);
-		int returnOrder();
-		void addIndices(std::vector<int> ind);
+		Simplex(std::vector<int> ind); // initialize with the indices
+
+		int getDim() const; // get the order/dimension of the simplex
+		const std::vector<int>& getVertices() const;
+
+		std::vector<Simplex> getFaces() const;
+
+		bool operator==(const Simplex& other) const;
+		bool operator<(const Simplex& other) const;
+		
+		static void printSimplex(const Simplex& s);
 	private:
-		int order;
-		PointCloud& pcRef; // reference to point cloud of all points
-		std::vector<int> indicesOfPoints; // indices of select points in point cloud as part of simplex
+		std::vector<int> indicesOfPoints; // reference to points in the pointCloud. ASSUME the simplex uses the pointCloud
 };

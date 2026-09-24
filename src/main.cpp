@@ -5,8 +5,12 @@
 
 int main() { //int argc, char* argv[] not used right now to circumvent warnings
 	std::cout << "Running main" << std::endl;
-	Simplex test(1);
-	std::cout << test.returnOrder() << std::endl;
+	Simplex triangle({2, 0, 1});
+	Simplex::printSimplex(triangle);
+	for (const auto& face : triangle.getFaces()) {
+		Simplex::printSimplex(face);
+	}
+	std::cout << "Same simplex from different order : " << (triangle == Simplex({0, 1, 2})) << std::endl;
 
 	/*PointCloud<3> temp; // intiialize a point cloud in R^3
 	std::array<double, 3> tempPoint= {1.0, 2.0, 3.0};
