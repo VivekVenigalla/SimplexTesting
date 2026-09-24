@@ -15,6 +15,14 @@ int main() { //int argc, char* argv[] not used right now to circumvent warnings
 	/*PointCloud<3> temp; // intiialize a point cloud in R^3
 	std::array<double, 3> tempPoint= {1.0, 2.0, 3.0};
 	temp.addPoint(tempPoint);*/
+	Simplex tetrahedron({3, 1, 0, 2});
+	Simplex::printSimplex(tetrahedron);
+	for (const auto& face : tetrahedron.getFaces()) {
+		Simplex::printSimplex(face);
+		for (const auto& edge : face.getFaces()) {
+			Simplex::printSimplex(edge);
+		}
+	}
 	Point a(2, {1.0, 2.0});
 	Point b(2, {3.0, 4.0});
 	Point sum = a + b;

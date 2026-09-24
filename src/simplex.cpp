@@ -23,6 +23,14 @@ const std::vector<int>& Simplex::getVertices() const {
 }
 
 std::vector<Simplex> Simplex::getFaces() const {
+	// in the code, the function creates a vector of simplexes
+	// each element of the simplex has its corresponding index of a point removed
+	// eg, the first simplex of faces(index = 0) has the 0 index point removed
+
+	// basically, this creates all of the subcomponents of the overall simplex given
+	// for example, a tetrathedron has four triangle faces
+	// this function takes each combination of triangle vertices and logs them into the faces vertex
+	
 	std::vector<Simplex> faces;
 	if (getDim() == 0) {
 		return faces;
