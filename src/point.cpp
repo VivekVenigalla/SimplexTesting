@@ -65,11 +65,13 @@ double Point::getDist(const Point& other) const {
 void Point::printPoint(const Point& po) {
     std::cout << "Dimension of point: " << po.getDim() << std::endl;
     std::cout << "Point : (";
-    for (i = 0; i < po.dimension ; i++) {
-    	if (i = po.dimension-1) {
-
+    for (int i = 0; i < po.dimension ; i++) {
+    	if (i == po.dimension-1) {
+    		std::cout << po.p[i];
     	}
-    	std::cout << element << ", ";
+    	else {
+    		std::cout << po.p[i] << ", ";
+    	}
     }
     std::cout << ")" << std::endl;
 
