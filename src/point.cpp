@@ -3,8 +3,8 @@
 Point::Point(int d, std::vector<double> in) : dimension(d), p(in);
 Point::Point(int d) : dimension(d);
 
-int Point::getDim(const Point& po) {
-	return po.dimension;
+int Point::getDim() {
+	return dimension;
 }
 
 Point::addElement(double in) {
@@ -51,7 +51,12 @@ Point Point::operator*(const double& c) {
 	return r;
 }
 
-friend std::ostream& Point::operator<<(std::ostream& os, const Point& po);{
-    os << "Player(Name: " << po.name << ", Score: " << po.score << ")";
-    return os;
+static void Point::printPoint(const Point& po);{
+    std::cout << "Dimension of point: " << po.getDim() << std::endl;
+    std::cout << "Point : (";
+    for (const auto element : po.p) {
+    	std::cout << element << ", ";
+    }
+    std::cout << ")" << std::endl;
+    
 }
