@@ -32,14 +32,36 @@ int main() { //int argc, char* argv[] not used right now to circumvent warnings
 		}
 	}
 
-	// additional tests
-	std::cout << "Additional tests: " << std::endl;
-	SimplicialComplex complex;
+	SimplicialComplex complex; // complex from adding only the tetrahedron
+	// Note: Since we have a default constructor, we have no need for the parantheses
 	complex.addSimplex(tetrahedron);
-	complex.addSimplex(Simplex({0, 1, 2}));
+	std::cout << "Complex after adding the Tetrahedron" << std::endl;
 	SimplicialComplex::printComplex(complex);
+	complex.addSimplex(Simplex({0, 1, 2})); // already a face of the tetrahedron so nothing changes
+	std::cout << "Complex after adding an existing face [0, 1, 2]" << std::endl;
+	SimplicialComplex::printComplex(complex);
+	// check if the simplex contains a good and bogey edge
 	std::cout << "Contains [1, 3] : " << complex.contains(Simplex({1, 3})) << std::endl;
 	std::cout << "Contains [0, 4] : " << complex.contains(Simplex({0, 4})) << std::endl;
+
+	std::cout << "New Simplicial Complex : Loop" << std::endl;
+	SimplicialComplex loop; // hollow triangle built from only its edges
+	loop.addSimplex(Simplex({0, 1}));
+	loop.addSimplex(Simplex({1, 2}));
+	loop.addSimplex(Simplex({0, 2}));
+	std::cout << "Hollow triangle" << std::endl;
+	SimplicialComplex::printComplex(loop);
+	/*for (const auto& edge : loop.getSimplices(1)) {
+		Simplex::printSimplex(edge);
+	}*/
+	std::cout << "Contains [0, 1, 2] : " << loop.contains(triangle) << std::endl; // should not contain
+	loop.addSimplex(triangle); // filling in the triangle
+	std::cout << "Filled triangle complex" << std::endl;
+	SimplicialComplex::printComplex(loop);
+	std::cout << "Contains [0, 1, 2] : " << loop.contains(triangle) << std::endl; // should contain
+
+	// additional tests
+	std::cout << "Additional tests: " << std::endl;
 	Point a(2, {1.0, 2.0});
 	Point b(2, {3.0, 4.0});
 	Point sum = a + b;

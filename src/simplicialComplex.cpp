@@ -33,7 +33,7 @@ int SimplicialComplex::getDim() const {
 	return dim;
 }
 
-std::vector<Simplex> SimplicialComplex::getSimplices(int d) const {
+std::vector<Simplex> SimplicialComplex::getSimplices(int d) const { // d is the order of which simplices you want
 	std::vector<Simplex> result;
 	for (const auto& s : simplices) { // simple iteration
 		if (s.getDim() == d) { // Remember getDim is a function of Simplex (# of vertexes - 1)
